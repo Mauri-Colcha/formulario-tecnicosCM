@@ -1,0 +1,165 @@
+/* ===== Fuente y estilo base ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Contenedor principal ===== */
+.form-container {
+  max-width: 750px;
+  /* Color azul claro del fondo del formulario */
+  background: rgba(58, 188, 235, 0.975);
+  margin: 40px auto;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Logo ===== */
+.logo-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  max-height: 80px;
+}
+
+/* ===== Título y descripción ===== */
+h2 {
+  text-align: center;
+  color: #0056b3;
+  margin: 10px 0;
+}
+
+.form-description {
+  text-align: center;
+  color: #5a3434;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* ===== Secciones del formulario ===== */
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+legend {
+  color: #0056b3;
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* 
+  🧩 CORRECCIÓN CLAVE:
+  Se eliminó display:flex para apilar los campos verticalmente.
+*/
+.form-group-inline {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ===== Inputs y selects base (incluye #contacto) ===== */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+#contacto {
+  width: 70%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+/* Estilo único para el campo de contacto */
+#contacto {
+  letter-spacing: 1px;
+}
+
+/* Efecto al enfocar (para todos los inputs/selects, incluyendo #contacto) */
+input:focus,
+select:focus,
+#contacto:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+}
+
+/* ===== Radios ===== */
+.radio-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ===== Botón ===== */
+.btn-submit {
+  width: 30%;
+  padding: 12px;
+  background-color: #007bff; /* Azul coherente */
+  margin: 0 auto;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.boton-centro {
+  text-align: center;
+}
+.btn-submit:hover {
+  background-color: #178954;
+}
+
+/* ===== Etiquetas ===== */
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ===== Validación visual ===== */
+#contacto:valid {
+  border-color: #28a745; /* Verde suave */
+}
+
+/* ===== Mensaje de error (si se usa JS) ===== */
+.input-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-group-inline {
+    flex-direction: column;
+  }
+}

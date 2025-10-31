@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Servicio Técnico</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="logo-container">
+        <img src="CMLogo.png" alt="Logo de la Empresa" class="logo">
+      </div>
+
+      <h2>Registro de Servicio Técnico</h2>
+      <p class="form-description">
+        Completa los siguientes campos para registrar un nuevo servicio.
+      </p>
+
+      <form action="/guardar-formulario" method="POST">
+        <fieldset class="form-section">
+          <legend>Información General</legend>
+          <div>
+            <div class="form-group">
+              <label for="fecha">Fecha del Servicio</label>
+              <input type="date" id="fecha" name="Fecha" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cliente">Nombre del Cliente</label>
+              <input type="text" id="cliente" name="Nombre_de_Cliente"
+                placeholder="Ej: Luis Pérez" required>
+            </div>
+            <div class="form-group">
+              <label for="contacto">Numero de Contacto</label>
+              <input type="number" id="contacto" name="Contacto"
+                placeholder="09....." required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Ubicación</legend>
+
+          <div class="form-group">
+            <label>Zona</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Zona" value="Rural" required>
+                Rural</label>
+              <label><input type="radio" name="Zona" value="Urbana">
+                Urbana</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="canton-select">Cantón</label>
+            <select id="canton-select" name="Canton" required>
+              <option value disabled selected>Seleccione un Cantón...</option>
+              <option value="Quito">Quito</option>
+              <option value="Cayambe">Cayambe</option>
+              <option value="Ibarra">Ibarra</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="parroquia-select">Parroquia</label>
+            <select id="parroquia-select" name="Parroquia" required>
+              <option value disabled selected>Seleccione una
+                Parroquia...</option>
+              <option value="Olmedo">Olmedo</option>
+              <option value="Juan Montalvo">Juan Montalvo</option>
+              <option value="Cangahua">Cangahua</option>
+              <option value="Ayora">Ayora</option>
+              <option value="Angochahua">Angochahua</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comunidad">Comunidad</label>
+            <input type="text" id="comunidad" name="Comunidad"
+              placeholder="Comunidad..." required>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Detalles del Servicio</legend>
+
+          <div class="form-group">
+            <label>Tipo de Servicio Realizado</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Tipo_de_Servicio"
+                  value="Mantenimiento" required> Mantenimiento</label>
+              <label><input type="radio" name="Tipo_de_Servicio"
+                  value="Reparacion"> Reparación</label>
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label for="marca-select">Marca de Lavadora</label>
+              <select id="marca-select" name="Marca" required>
+                <option value disabled selected>Seleccione una Marca...</option>
+                <option value="LG">LG</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Electrolux">Electrolux</option>
+                <option value="Whirlpool">Whirlpool</option>
+                <option value="Mabe">Mabe</option>
+                <option value="Indurama">Indurama</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="residuos">Residuos Evitados (kg)</label>
+              <input type="number" id="residuos" name="Residuos_evitados"
+                min="0" step="0.1" placeholder="Ej: 2.5">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Beneficiarios</legend>
+          <div class="form-group-inline">
+            <div class="form-group">
+              <label for="num_beneficiarios">Número de Beneficiarios</label>
+              <input type="number" id="num_beneficiarios"
+                name="Numero_de_beneficiarios" min="1" value="1" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Costo del Servicio</legend>
+          <div>
+            <div class="form-group">
+              <label for="val_repuesto">Costo del repuesto</label>
+              <input type="number" id="val_repuesto" name="Costo_de_repuesto"
+                min="0" step="0.01" placeholder="$ 8.00" required>
+            </div>
+            <div class="form-group">
+              <label for="val_servicio">Valor total del servicio</label>
+              <input type="number" id="val_servicio" name="Costo_de_servicio"
+                min="0" step="0.01" placeholder="$ 15.00" required>
+            </div>
+          </div>
+        </fieldset>
+        
+        <div class="boton-centro">
+          <button type="submit" class="btn-submit">Guardar Registro</button>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro Exitoso</title>
+  <style>
+    /* ===== Estilos generales ===== */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* ===== Tarjeta principal ===== */
+    .container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    /* ===== Icono de check ===== */
+    .check {
+      font-size: 60px;
+      color: #28a745;
+      margin-bottom: 15px;
+      animation: pop 0.5s ease-in-out;
+    }
+
+    /* ===== Título ===== */
+    h1 {
+      color: #28a745;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    /* ===== Texto ===== */
+    p {
+      font-size: 1.05em;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    /* ===== Enlace ===== */
+    a {
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* ===== Animaciones ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ===== Texto de redirección ===== */
+    .redirect {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="check">✅</div>
+    <h1>¡Registro Exitoso!</h1>
+    <p>Los datos han sido recibidos y guardados correctamente en el sistema.</p>
+    <a href="/formulario.html">Volver al Formulario</a>
+    <p class="redirect">Serás redirigido automáticamente en <span id="timer">5</span> segundos...</p>
+  </div>
+
+  <script>
+    // Redirección automática después de 5 segundos
+    let timeLeft = 5;
+    const timerDisplay = document.getElementById("timer");
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerDisplay.textContent = timeLeft;
+      if (timeLeft === 0) {
+        clearInterval(countdown);
+        window.location.href = "/formulario.html";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

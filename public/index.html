@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio | CM Servicio Técnico</title>
+  <style>
+    /* ====== ESTILOS BASE ====== */
+    :root {
+      --primary-color: #2ecc71;
+      --secondary-color: #3498db;
+      --text-color: #2c3e50;
+      --bg-gradient: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+      --font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      margin: 0;
+      padding: 0;
+      background: var(--bg-gradient);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      max-width: 420px;
+      width: 90%;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .logo {
+      width: 90px;
+      height: auto;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    a.boton {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+    }
+
+    a.boton:hover {
+      background-color: #27ae60;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+    }
+
+    /* ====== ANIMACIONES ====== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 500px) {
+      .container {
+        padding: 35px 25px;
+      }
+      h1 {
+        font-size: 1.7em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Puedes reemplazar este logo por una imagen tuya -->
+    <img src="CMlogo.png" alt="Logo CM" class="logo" />
+    <h1>CM Servicio Técnico</h1>
+    <p>Bienvenido al sistema de registro de servicios y clientes.  
+    Haz clic abajo para continuar al formulario.</p>
+    <a href="formulario.html" class="boton">Ir al Formulario</a>
+  </div>
+</body>
+</html>
