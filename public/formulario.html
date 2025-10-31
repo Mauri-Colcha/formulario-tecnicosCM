@@ -48,8 +48,10 @@
           <div class="form-group">
             <label>Zona</label>
             <div class="radio-group">
-              <label><input type="radio" name="Zona" value="Rural" required> Rural</label>
-              <label><input type="radio" name="Zona" value="Urbana"> Urbana</label>
+              <label><input type="radio" name="Zona" value="Rural" required>
+                Rural</label>
+              <label><input type="radio" name="Zona" value="Urbana">
+                Urbana</label>
             </div>
           </div>
 
@@ -66,7 +68,8 @@
           <div class="form-group">
             <label for="parroquia-select">Parroquia</label>
             <select id="parroquia-select" name="Parroquia" required>
-              <option value disabled selected>Seleccione una Parroquia...</option>
+              <option value disabled selected>Seleccione una
+                Parroquia...</option>
               <option value="Olmedo">Olmedo</option>
               <option value="Juan Montalvo">Juan Montalvo</option>
               <option value="Cangahua">Cangahua</option>
@@ -139,8 +142,9 @@
           </div>
         </fieldset>
 
-        <div class="boton-centro">
+        <div class="botones-centro">
           <button type="submit" class="btn-submit">Guardar Registro</button>
+          <a href="ver-registros.html" class="btn-secondary">Ver Registros</a>
         </div>
       </form>
     </div>
@@ -170,13 +174,14 @@
         const data = Object.fromEntries(new FormData(form));
 
         try {
-          await addDoc(collection(db, "registros"), data);
-          alert("✅ Registro guardado correctamente en la nube");
-          form.reset();
-        } catch (error) {
-          console.error("Error al guardar:", error);
-          alert("❌ Ocurrió un error al guardar los datos");
-        }
+  await addDoc(collection(db, "registros"), data);
+  alert("✅ Registro guardado correctamente en la nube");
+  window.location.href = "gracias.html"; // redirige después de guardar
+} catch (error) {
+  console.error("Error al guardar:", error);
+  alert("❌ Ocurrió un error al guardar los datos");
+}
+
       });
     </script>
   </body>

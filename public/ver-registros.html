@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registros Guardados</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros Guardados</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="ver-registros.css">
-</head>
-<body>
-  <h1>📋 Registros Guardados</h1>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="ver-registros.css">
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="CMlogo.png" alt="Logo de la Empresa" class="logo">
+    </div>
+    <h1>Registros Guardados</h1>
 
-  <table id="tabla-registros">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Cliente</th>
-        <th>Contacto</th>
-        <th>Zona</th>
-        <th>Cantón</th>
-        <th>Parroquia</th>
-        <th>Tipo Servicio</th>
-        <th>Marca</th>
-        <th>Residuos (kg)</th>
-        <th>Beneficiarios</th>
-        <th>Repuesto ($)</th>
-        <th>Servicio ($)</th>
-      </tr>
-    </thead>
-    <tbody id="tabla-body">
-      <tr><td colspan="11" style="text-align:center;">Cargando registros...</td></tr>
-    </tbody>
-  </table>
+    <table id="tabla-registros">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Contacto</th>
+          <th>Zona</th>
+          <th>Cantón</th>
+          <th>Parroquia</th>
+          <th>Tipo Servicio</th>
+          <th>Marca</th>
+          <th>Residuos (kg)</th>
+          <th>Beneficiarios</th>
+          <th>Repuesto ($)</th>
+          <th>Servicio ($)</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-body">
+        <tr><td colspan="11" style="text-align:center;">Cargando
+            registros...</td></tr>
+      </tbody>
+    </table>
 
-  <div class="buttons">
-    <a href="index.html" class="btn">← Volver al formulario</a>
-    <button id="exportar" class="btn export-btn">⬇️ Exportar a Excel</button>
-  </div>
+    <div class="buttons">
+      <a href="index.html" class="btn">← Volver al formulario</a>
+      <button id="exportar" class="btn export-btn">⬇️ Exportar a Excel</button>
+    </div>
 
-  <script type="module">
+    <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
@@ -146,5 +152,5 @@
     document.getElementById("exportar").addEventListener("click", exportarCSV);
     cargarRegistros();
   </script>
-</body>
+  </body>
 </html>
