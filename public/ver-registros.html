@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registros Guardados</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ver-registros.css">
+</head>
+<body>
+  <h1>📋 Registros Guardados</h1>
+
+  <table id="tabla-registros">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Contacto</th>
+        <th>Zona</th>
+        <th>Cantón</th>
+        <th>Parroquia</th>
+        <th>Tipo Servicio</th>
+        <th>Marca</th>
+        <th>Residuos (kg)</th>
+        <th>Beneficiarios</th>
+        <th>Repuesto ($)</th>
+        <th>Servicio ($)</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-body">
+      <tr><td colspan="11" style="text-align:center;">Cargando registros...</td></tr>
+    </tbody>
+  </table>
+
+  <div class="buttons">
+    <a href="index.html" class="btn">← Volver al formulario</a>
+    <button id="exportar" class="btn export-btn">⬇️ Exportar a Excel</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCho8Zdm-LU0LpiK1O7m2sMZNu4r8FUPdo",
+      authDomain: "tecnicoscm-125e0.firebaseapp.com",
+      projectId: "tecnicoscm-125e0",
+      storageBucket: "tecnicoscm-125e0.firebasestorage.app",
+      messagingSenderId: "1095049929725",
+      appId: "1:1095049929725:web:2da5264b32eb3585f66f94",
+      measurementId: "G-FCDND4ZF1J"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const tablaBody = document.getElementById("tabla-body");
+    let registros = [];
+
+    async function cargarRegistros() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "registros"));
+        tablaBody.innerHTML = "";
+        registros = [];
+
+        if (querySnapshot.empty) {
+          tablaBody.innerHTML = `<tr><td colspan="11" style="text-align:center;">No hay registros aún.</td></tr>`;
+          return;
+        }
+
+        querySnapshot.forEach((doc) => {
+          const r = doc.data();
+          registros.push(r);
+          const fila = `
+            <tr>
+              <td>${r.Fecha || ""}</td>
+              <td>${r.Nombre_de_Cliente || ""}</td>
+              <td>${r.Contacto || ""}</td>
+              <td>${r.Zona || ""}</td>
+              <td>${r.Canton || ""}</td>
+              <td>${r.Parroquia || ""}</td>
+              <td>${r.Tipo_de_Servicio || ""}</td>
+              <td>${r.Marca || ""}</td>
+              <td>${r.Residuos_evitados || ""}</td>
+              <td>${r.Numero_de_beneficiarios || ""}</td>
+              <td>${r.Costo_de_repuesto || ""}</td>
+              <td>${r.Costo_de_servicio || ""}</td>
+            </tr>
+          `;
+          tablaBody.innerHTML += fila;
+        });
+      } catch (error) {
+        console.error("Error al cargar los datos:", error);
+        tablaBody.innerHTML = `<tr><td colspan="11" style="text-align:center;color:red;">Error al cargar datos</td></tr>`;
+      }
+    }
+
+    function exportarCSV() {
+      if (registros.length === 0) {
+        alert("No hay datos para exportar.");
+        return;
+      }
+
+      const encabezados = [
+        "Fecha",
+        "Cliente",
+        "Contacto",
+        "Zona",
+        "Canton",
+        "Parroquia",
+        "Tipo_de_Servicio",
+        "Marca",
+        "Residuos_evitados",
+        "Numero_de_beneficiarios",
+        "Costo_de_repuesto",
+        "Costo_de_servicio"
+      ];
+
+      const filas = registros.map(r => [
+        r.Fecha || "",
+        r.Nombre_de_Cliente || "",
+        r.Contacto || "",
+        r.Zona || "",
+        r.Canton || "",
+        r.Parroquia || "",
+        r.Tipo_de_Servicio || "",
+        r.Marca || "",
+        r.Residuos_evitados || "",
+        r.Numero_de_beneficiarios || "",
+        r.Costo_de_repuesto || "",
+        r.Costo_de_servicio || ""
+      ]);
+
+      const csvContent = [encabezados, ...filas]
+        .map(e => e.map(v => `"${v}"`).join(","))
+        .join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `registros_${new Date().toISOString().slice(0,10)}.csv`;
+      link.click();
+    }
+
+    document.getElementById("exportar").addEventListener("click", exportarCSV);
+    cargarRegistros();
+  </script>
+</body>
+</html>
