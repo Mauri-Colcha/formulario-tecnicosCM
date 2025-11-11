@@ -86,3 +86,26 @@ tr:hover {
   table { font-size: 0.85em; }
   th, td { padding: 8px; }
 }
+
+@media (max-width: 600px) {
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+  }
+
+  th, td {
+    white-space: nowrap;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

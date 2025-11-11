@@ -27,6 +27,7 @@
           <th>Parroquia</th>
           <th>Tipo Servicio</th>
           <th>Marca</th>
+          <th>Descripcion</th>
           <th>Residuos (kg)</th>
           <th>Beneficiarios</th>
           <th>Repuesto ($)</th>
@@ -88,6 +89,7 @@
               <td>${r.Parroquia || ""}</td>
               <td>${r.Tipo_de_Servicio || ""}</td>
               <td>${r.Marca || ""}</td>
+              <td>${r.Descripcion || ""}</td>
               <td>${r.Residuos_evitados || ""}</td>
               <td>${r.Numero_de_beneficiarios || ""}</td>
               <td>${r.Costo_de_repuesto || ""}</td>
@@ -117,6 +119,7 @@
         "Parroquia",
         "Tipo_de_Servicio",
         "Marca",
+        "Descripcion",
         "Residuos_evitados",
         "Numero_de_beneficiarios",
         "Costo_de_repuesto",
@@ -132,6 +135,7 @@
         r.Parroquia || "",
         r.Tipo_de_Servicio || "",
         r.Marca || "",
+        r.Descripcion || "",
         r.Residuos_evitados || "",
         r.Numero_de_beneficiarios || "",
         r.Costo_de_repuesto || "",
